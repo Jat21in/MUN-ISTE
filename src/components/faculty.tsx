@@ -6,7 +6,7 @@ import { Users, BookOpen, Crown, Star, Mail, Phone, GraduationCap, Building, Awa
 const facultyLeadership = [
   {
     id: 1,
-    name: "Dr. Rajesh Kumar",
+    name: "S. Satnam Singh Sandhu",
     position: "Chancellor",
     department: "Office of the Chancellor",
     bio: "Head of the university, providing honorary and ceremonial leadership to guide institutional excellence.",
@@ -15,7 +15,7 @@ const facultyLeadership = [
   },
   {
     id: 2,
-    name: "Prof. Meera Sharma",
+    name: "Prof. (Dr.) Manpreet Singh Manna",
     position: "VC",
     department: "Office of the Vice Chancellor",
     bio: "Vice Chancellor responsible for overall university administration and academic oversight.",
@@ -24,7 +24,7 @@ const facultyLeadership = [
   },
   {
     id: 3,
-    name: "Dr. Anil Gupta",
+    name: "Prof. (Dr.) Vinay Kumar Mittal",
     position: "PVC (Academic Affairs)",
     department: "Academic Affairs Office",
     bio: "Pro Vice Chancellor overseeing academic operations and educational excellence across all departments.",
@@ -36,7 +36,7 @@ const facultyLeadership = [
 const engineeringLeadership = [
   {
     id: 4,
-    name: "Prof. Sunita Verma",
+    name: "Prof. (Dr.) Sachin Ahuja",
     position: "ED Engineering",
     department: "Faculty of Engineering",
     bio: "Executive Director of Engineering, leading strategic initiatives and coordinating engineering programs.",
@@ -45,7 +45,7 @@ const engineeringLeadership = [
   },
   {
     id: 5,
-    name: "Dr. Vikram Singh",
+    name: "Prof. (Dr.) Satbir Singh Sehgal",
     position: "AD Eng",
     department: "Faculty of Engineering",
     bio: "Associate Dean of Engineering, providing strategic guidance and academic leadership.",
@@ -57,7 +57,7 @@ const engineeringLeadership = [
 const departmentalFaculty = [
   {
     id: 6,
-    name: "Dr. Priya Joshi",
+    name: "Dr. Sandeep Singh Kang",
     position: "Deputy HOD",
     department: "Computer Science & Engineering",
     bio: "Deputy Head of Department managing departmental operations and ensuring quality education delivery.",
@@ -66,7 +66,7 @@ const departmentalFaculty = [
   },
   {
     id: 7,
-    name: "Prof. Amit Patel",
+    name: "Neha Dutta",
     position: "Faculty 1",
     department: "Faculty of Engineering",
     bio: "Faculty Member providing quality education and academic guidance to students.",
@@ -75,7 +75,7 @@ const departmentalFaculty = [
   },
   {
     id: 8,
-    name: "Dr. Kavita Reddy",
+    name: "Neetu Maam",
     position: "Faculty 2",
     department: "Faculty of Engineering",
     bio: "Faculty Member supporting student development through teaching and mentorship.",
@@ -131,14 +131,18 @@ const FacultyStructure = () => {
       >
         {/* Card Header with Full Image */}
         <div className="relative overflow-hidden rounded-t-2xl">
-          <div className={`${imageHeights[size]} relative`}>
+          <div className={`${imageHeights[size]} relative bg-gray-800`}>
             <img
-              src={member.image || "/placeholder.svg"}
+              src={member.image || "/placeholder.svg?height=400&width=400&query=professional portrait"}
               alt={member.name}
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              onError={(e) => {
+                const target = e.target as HTMLImageElement
+                target.style.display = "none"
+              }}
             />
             {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20 bg-gray-900"></div>
 
             {/* Icon Badge */}
             {IconComponent && (
@@ -152,16 +156,25 @@ const FacultyStructure = () => {
               Active
             </div>
 
-            {/* Name Overlay for better visibility */}
-            <div className="absolute bottom-4 left-4 right-4">
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-4">
               <h3
-                className={`font-bold text-white mb-1 drop-shadow-lg ${
+                className={`font-bold text-white mb-1 ${
                   size === "large" ? "text-2xl" : size === "small" ? "text-lg" : "text-xl"
                 }`}
+                style={{
+                  textShadow: "2px 2px 8px rgba(0,0,0,1), 0 0 4px rgba(0,0,0,0.8)",
+                  color: "#ffffff",
+                }}
               >
                 {member.name}
               </h3>
-              <p className={`text-white/90 font-semibold drop-shadow ${size === "large" ? "text-lg" : "text-base"}`}>
+              <p
+                className={`text-white font-semibold ${size === "large" ? "text-lg" : "text-base"}`}
+                style={{
+                  textShadow: "1px 1px 6px rgba(0,0,0,1), 0 0 3px rgba(0,0,0,0.8)",
+                  color: "#ffffff",
+                }}
+              >
                 {member.position}
               </p>
             </div>
